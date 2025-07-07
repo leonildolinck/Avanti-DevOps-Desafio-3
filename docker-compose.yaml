@@ -1,0 +1,26 @@
+services:
+  site:
+    image: leonildolinck/gerador-saudacoes:1.0
+    ports:
+      - "80:80"
+    depends_on:
+      - api-pessoas-aleatorias
+      - api-saudacoes-aleatorias
+    networks:
+      - backend
+
+  api-pessoas-aleatorias:
+    image: leonildolinck/api-pessoas-aleatorias:1.0
+    ports:
+      - "8000:8000"
+    networks:
+      - backend
+
+  api-saudacoes-aleatorias:
+    image: leonildolinck/api-saudacoes-aleatorias:1.0
+    ports:
+      - "8081:8080"
+    networks:
+      - backend
+networks:
+  backend: {}
